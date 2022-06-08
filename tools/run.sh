@@ -2,4 +2,4 @@
 
 root=$PWD
 
-$root/build/sandbox
+$root/build/app

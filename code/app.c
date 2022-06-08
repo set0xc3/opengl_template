@@ -1,20 +1,17 @@
-#include "base_def.h"
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-internal void glfw_error_callback(i32 error, const char* description);
-internal u32 compile_shaders();
-internal char *read_file(const char *path);
+#include "base_types.h"
+#include "app.h"
 
-struct app_context
+typedef struct App_Context
 {
     GLFWwindow* window;
     
     u32 rendering_program;
     u32 vertex_array_object;
-};
-global_variable app_context app;
+} App_Context;
+global_variable App_Context app;
 
 int 
 main()
@@ -75,21 +72,21 @@ main()
     return 0;
 }
 
-internal void 
+function void 
 glfw_error_callback(i32 error, const char* description)
 {
     fprintf(stderr, "[GLFW] %d: %s\n", error, description);
 }
 
-internal u32 
+function u32 
 compile_shaders()
 {
     u32 vertex_shader = 0;
     u32 fragment_shader = 0;
     u32 program = 0;
     
-    const char *vertex_shader_source = read_file("assets/shaders/render.vs.glsl");
-    const char *fragment_shader_source = read_file("assets/shaders/render.fs.glsl");
+    const char *vertex_shader_source = read_from_file("assets/shaders/render.vs.glsl");
+    const char *fragment_shader_source = read_from_file("assets/shaders/render.fs.glsl");
     
     // Create and compile vertex shader
     vertex_shader = glCreateShader(GL_VERTEX_SHADER);
@@ -114,8 +111,8 @@ compile_shaders()
     return program;
 }
 
-internal char 
-*read_file(const char *path)
+function char 
+*read_from_file(const char *path)
 {
     FILE *file = fopen(path , "r");
     char *str = 0;

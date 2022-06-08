@@ -5,7 +5,7 @@ root=$PWD
 files="
 $root/third-party/glad/src/glad.c
 
-$root/code/main.cpp
+$root/code/app.c
 "
 
 includes="
@@ -27,7 +27,7 @@ libs="
 $GL
 "
 
-binary=$root/build/sandbox
+binary=$root/build/app
 flags="-O0 -g3"
 
 mkdir -p $root/build/

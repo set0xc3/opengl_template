@@ -1,15 +1,15 @@
 /* date = May 27th 2022 2:43 pm */
 
-#ifndef BASE_DEF_H
-#define BASE_DEF_H
+#ifndef BASE_TYPES_H
+#define BASE_TYPES_H
 
-// Standard headers
 #include <stdint.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdbool.h>
+
 #include <string.h>
-#include <cstdlib>
 #include <errno.h>
 
 typedef uint8_t  u8;
@@ -24,14 +24,14 @@ typedef int64_t i64;
 
 typedef float  f32;
 typedef double f64;
-typedef u8     b8;
+typedef bool   b8;
 
-#define internal        static
+#define function        static
 #define local_variable  static
 #define global_variable static
 
 // Memory
-#define ZERO_MEMORY(s) (memset(s, 0, sizeof(*s)))
-#define ZERO_STRUCT(s) (memset(s, 0, sizeof(*s)))
+#define ZeroMemory(s) (memset(s, 0, sizeof(*s)))
+#define ZeroStruct(s) (memset(s, 0, sizeof(*s)))
 
-#endif //BASE_DEF_H
+#endif //BASE_TYPES_H
